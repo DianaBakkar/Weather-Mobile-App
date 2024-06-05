@@ -51,7 +51,16 @@ fun WeatherScreen(viewModel: WeatherDataViewModel = viewModel(factory = ViewMode
         Spacer(modifier = Modifier.height(16.dp))
 
         viewModel.weatherState.observeAsState().value?.let { weather ->
-            Text("Temperature: ${weather.main.temperature}")
+            Text("Temperature: ${weather.list[1].main.temp}\n" +
+                    "Feels Like: ${weather.list[1].main.feelsLike}\n"+
+                    "Min Temp: ${weather.list[1].main.tempMin}\n"+
+                    "Max Temp: ${weather.list[1].main.tempMax}\n"+
+                    "Pressure: ${weather.list[1].main.pressure}\n"+
+                    "Sea Level: ${weather.list[1].main.seaLevel}\n"+
+                    "Ground Level: ${weather.list[1].main.groundLevel}\n"+
+                    "Humidity: ${weather.list[1].main.humidity}\n"
+
+            )
         }
 
         viewModel.errorState.observeAsState().value?.let { error ->
